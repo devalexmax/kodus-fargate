@@ -1,0 +1,32 @@
+{
+  "executionRoleArn": "arn:aws:iam::601912882130:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/fargate/service/kodus-fargate-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "fargate"
+        }
+      },
+      "portMappings": [
+        {
+          "hostPort": 8080,
+          "protocol": "tcp",
+          "containerPort": 8080
+        }
+      ],
+      "image": "601912882130.dkr.ecr.eu-west-1.amazonaws.com/kodus-fargate-app:425ad54",
+      "name": "kodus-fargate-app"
+    }
+  ],
+  "memory": "512",
+  "family": "kodus-fargate-app-td",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "networkMode": "awsvpc",
+  "cpu": "256"
+
+}
